@@ -1,0 +1,8 @@
+.*
+*.pyc
+nbproject
+/_extras
+/dist
+/djt_object_tree_lookup.*
+/lib
+/node_modules
