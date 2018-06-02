@@ -18,16 +18,21 @@
  * "ObjectTreeLookup" supports validation and deep object property
  * access.
  *
- * @since v1.0.0
+ * @author    direct Netware Group
+ * @copyright (C) direct Netware Group - All rights reserved
+ * @package   djt-object-tree-lookup
+ * @since     v1.0.0
+ * @license   https://www.direct-netware.de/redirect?licenses;mpl2
+ *            Mozilla Public License, v. 2.0
  */
 export default class ObjectTreeLookup {
     /**
      * Returns true if the given node path exists for the object.
      *
-     * @param {Object} _object Object to look up
-     * @param {String} nodePath Node path to validate
+     * @param _object Object to look up
+     * @param nodePath Node path to validate
      *
-     * @return {boolean} True if the node path exist
+     * @return True if the node path exist
      * @since  v1.0.0
      */
     public static exists(_object: object, nodePath: string) {
