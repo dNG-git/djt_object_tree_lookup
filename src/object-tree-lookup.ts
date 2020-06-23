@@ -59,4 +59,37 @@ export default class ObjectTreeLookup {
 
         return _return;
     }
+
+    /**
+     * Returns the value of the given node path for the object.
+     *
+     * @param _object Object to look up
+     * @param nodePath Node path to validate
+     *
+     * @return Value of the node path
+     * @since  v1.1.0
+     */
+    public static get(_object: unknown, nodePath: string) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let _return: any = _object;
+
+        const nodePathElements = nodePath.split('.');
+
+        for (const property of nodePathElements) {
+            if (
+                typeof _return != 'object'
+                || _return === null
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                || _return[property] === undefined
+               ) {
+                throw new Error('Node path not found for the given object');
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+            _return = _return[property];
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return _return;
+    }
 }
