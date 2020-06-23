@@ -35,23 +35,25 @@ export default class ObjectTreeLookup {
      * @return True if the node path exist
      * @since  v1.0.0
      */
-    public static exists(_object: object, nodePath: string) {
+    public static exists(_object: unknown, nodePath: string) {
         let _return = true;
 
-        // tslint:disable-next-line:no-any
-        let objectPointer: any = _object;
         const nodePathElements = nodePath.split('.');
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let objectPointer: any = _object;
 
         for (const property of nodePathElements) {
             if (
                 typeof objectPointer != 'object'
                 || objectPointer === null
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 || objectPointer[property] === undefined
                ) {
                 _return = false;
                 break;
             }
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             objectPointer = objectPointer[property];
         }
 
